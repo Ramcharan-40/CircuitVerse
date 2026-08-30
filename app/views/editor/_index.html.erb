@@ -30,7 +30,7 @@
           serverPath: 'https://api.imgur.com/3/image',
           fileFieldName: 'image',
           headers: {
-            'Authorization': 'Client-ID <%= ENV["IMGUR_CLIENT_ID"] %>'
+            'Authorization': 'Client-ID ' + <%= ENV.fetch("IMGUR_CLIENT_ID", "").to_json %>
           },
           urlPropertyName: 'data.link',
         },

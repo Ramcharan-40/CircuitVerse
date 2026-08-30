@@ -8,7 +8,7 @@
       window.logixProjectId = <%= @project&.id || 'null' %>;
       window.isUserLoggedIn = <%= user_signed_in? %>;
       window.embed = false;
-      window.imgurClientId = "<%= ENV['IMGUR_CLIENT_ID'] %>";
+      window.imgurClientId = <%= ENV.fetch('IMGUR_CLIENT_ID', '').to_json %>;
     </script>
     <script type="module" src="/simulator-v0/simulator-v0.js"></script>
 
