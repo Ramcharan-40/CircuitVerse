@@ -653,17 +653,21 @@ async function postUserIssue(message) {
 
     let result;
     try {
-        result = await $.ajax({
-                url: 'https://api.imgur.com/3/image',
-                type: 'POST',
-                data: {
-                    image: img
-                },
-                dataType: 'json',
-                headers: {
-                    Authorization: 'Client-ID 9a33b3b370f1054'
-                },
-            });
+        if (window.imgurClientId) {
+            result = await $.ajax({
+                    url: 'https://api.imgur.com/3/image',
+                    type: 'POST',
+                    data: {
+                        image: img
+                    },
+                    dataType: 'json',
+                    headers: {
+                        Authorization: 'Client-ID ' + window.imgurClientId
+                    },
+                });
+        } else {
+            console.warn("postUserIssue: Imgur client ID not configured, skipping image upload.");
+        }
     } catch (err) {
         console.error("Could not generate image, reporting anyway");
     }

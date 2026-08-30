@@ -80,6 +80,7 @@ services:
       - -c
       - |
         bin/docker/wait_for_setup && \
+        ([ -L cv-frontend-vue/v0/src ] || (rm -f cv-frontend-vue/v0/src && ln -s ../src cv-frontend-vue/v0/src)) && \
         yarn build --watch
     ports:
       - "3035:3035"
