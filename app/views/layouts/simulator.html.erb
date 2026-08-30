@@ -3,6 +3,7 @@
     <title><%= t("layout.simulator.title") %></title>
     <%= csrf_meta_tags %>
     <script>window.locale = "<%= I18n.locale %>"</script>
+    <script>window.imgurClientId = "<%= ENV['IMGUR_CLIENT_ID'] %>"</script>
     <script src="/js/pace.js"></script>
     <%= vite_client_tag %>
     <%= vite_javascript_tag "jquery" %>
